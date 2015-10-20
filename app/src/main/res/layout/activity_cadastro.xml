@@ -55,6 +55,7 @@
             android:id="@+id/campoEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:hint="Caso não possua deixe em branco"
             android:inputType="textEmailAddress"
             android:maxLines="1"
             android:singleLine="true" />
@@ -103,10 +104,10 @@
             android:id="@+id/campoSenha"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:hint="Entre 4 e 10 caracteres"
             android:inputType="textPassword"
             android:maxLines="1"
-            android:singleLine="true"
-            android:hint="Entre 4 e 10 caracteres"/>
+            android:singleLine="true" />
 
         <TextView
             android:id="@+id/textSenha2"
@@ -124,5 +125,26 @@
             android:maxLines="1"
             android:singleLine="true" />
 
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_gravity="right">
+
+            <Button
+                android:id="@+id/botaoCancelar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:text="Cancelar"
+                />
+
+            <Button
+                android:id="@+id/botaoProximo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:text="Próximo" />
+        </TableRow>
     </LinearLayout>
 </LinearLayout>

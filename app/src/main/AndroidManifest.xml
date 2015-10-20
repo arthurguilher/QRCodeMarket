@@ -24,6 +24,8 @@
         </activity>
         <activity android:name=".CadastroActivity" >
         </activity>
+        <activity android:name=".CadastroEndereco" >
+        </activity>
     </application>
 
 </manifest>
