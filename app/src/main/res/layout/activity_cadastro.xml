@@ -14,8 +14,9 @@
         android:id="@+id/form_cadastro"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:weightSum="1">
+        android:layout_weight="1"
+        android:orientation="vertical">
+
 
         <TextView
             android:id="@+id/textTitulo"
@@ -27,117 +28,115 @@
             android:text="Informações Básicas"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
-        <TextView
-            android:id="@+id/textNome"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:text="Nome completo:"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <AutoCompleteTextView
             android:id="@+id/campoNome"
-            android:layout_width="match_parent"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:hint="Nome completo"
             android:inputType="textPersonName"
             android:maxLines="1"
             android:singleLine="true" />
 
-        <TextView
-            android:id="@+id/textEmail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="E-mail:"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
 
-        <AutoCompleteTextView
-            android:id="@+id/campoEmail"
-            android:layout_width="match_parent"
+        <TableRow
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:hint="Caso não possua deixe em branco"
-            android:inputType="textEmailAddress"
-            android:maxLines="1"
-            android:singleLine="true" />
+            android:layout_gravity="left"
+            android:weightSum="1">
 
-        <TextView
-            android:id="@+id/textCPF"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="CPF:"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            <AutoCompleteTextView
+                android:id="@+id/campoEmail"
+                android:layout_width="0dp"
+                android:layout_weight=".60"
+                android:hint="E-mail (se possuir)"
+                android:inputType="textEmailAddress"
+                android:maxLines="1"
+                android:singleLine="true" />
 
-        <AutoCompleteTextView
-            android:id="@+id/campoCPF"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="number"
-            android:maxLines="1"
-            android:singleLine="true" />
+            <AutoCompleteTextView
+                android:id="@+id/campoCPF"
+                android:layout_width="0dp"
+                android:layout_weight=".40"
+                android:hint="CPF"
+                android:inputType="number"
+                android:maxLines="1"
+                android:singleLine="true" />
+        </TableRow>
 
-        <TextView
-            android:id="@+id/textTelefone"
-            android:layout_width="wrap_content"
+        <TableRow
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="Telefone celular:"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:layout_gravity="left"
+            android:weightSum="1">
 
-        <AutoCompleteTextView
-            android:id="@+id/campoTelefone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="number"
-            android:maxLines="1"
-            android:singleLine="true" />
+            <AutoCompleteTextView
+                android:id="@+id/campoTelefone"
+                android:layout_width="0dp"
+                android:layout_weight=".33"
+                android:hint="Celular"
+                android:inputType="number"
+                android:maxLines="1"
+                android:singleLine="true" />
 
-        <TextView
-            android:id="@+id/textSenha"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="Senha:"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            <AutoCompleteTextView
+                android:id="@+id/campoNascimento"
+                android:layout_width="0dp"
+                android:layout_weight=".33"
+                android:hint="Nascimento"
+                android:inputType="number"
+                android:maxLines="1"
+                android:singleLine="true" />
 
-        <AutoCompleteTextView
-            android:id="@+id/campoSenha"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Entre 4 e 10 caracteres"
-            android:inputType="textPassword"
-            android:maxLines="1"
-            android:singleLine="true" />
+            <Spinner
+                android:id="@+id/spinnerSexo"
+                android:layout_width="0dp"
+                android:layout_gravity="right"
+                android:layout_weight=".36"
+                android:spinnerMode="dialog" />
 
-        <TextView
-            android:id="@+id/textSenha2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="Confirme a senha:"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+        </TableRow>
 
-        <AutoCompleteTextView
-            android:id="@+id/campoSenha2"
-            android:layout_width="match_parent"
+        <TableRow
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPassword"
-            android:maxLines="1"
-            android:singleLine="true" />
+            android:layout_gravity="left"
+            android:weightSum="1">
+
+            <AutoCompleteTextView
+                android:id="@+id/campoSenha"
+                android:layout_height="wrap_content"
+                android:hint="@string/small_hint_senha"
+                android:inputType="textPassword"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:layout_width="0dp"
+                android:layout_weight=".50"/>
+
+            <AutoCompleteTextView
+                android:id="@+id/campoSenha2"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:layout_width="0dp"
+                android:layout_weight=".50"
+                android:hint="@string/small_hint_senha2"/>
+        </TableRow>
 
         <TableRow
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:layout_gravity="right">
+            android:layout_gravity="right"
+            android:layout_marginTop="30dp">
 
             <Button
                 android:id="@+id/botaoCancelar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
-                android:text="Cancelar"
-                />
+                android:text="Cancelar" />
 
             <Button
                 android:id="@+id/botaoProximo"

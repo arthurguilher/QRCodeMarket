@@ -4,10 +4,18 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Html;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.Spinner;
+
+import java.sql.Date;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 public class CadastroActivity extends AppCompatActivity {
 
@@ -18,12 +26,16 @@ public class CadastroActivity extends AppCompatActivity {
     private AutoCompleteTextView campoTelefone;
     private AutoCompleteTextView campoSenha1;
     private AutoCompleteTextView campoSenha2;
+    private AutoCompleteTextView campoNascimento;
+    private Spinner spinnerSexo;
+    public static Cliente cliente;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro);
         setTitle("Cadastro - Etapa 1 de 3");
+
 
         campoCPF = (AutoCompleteTextView) findViewById(R.id.campoCPF);
         campoCPF.addTextChangedListener(Mask.insert(Mask.CPF_MASK, campoCPF)); // Formatar o campo do CPF
@@ -36,11 +48,29 @@ public class CadastroActivity extends AppCompatActivity {
         campoSenha1 = (AutoCompleteTextView) findViewById(R.id.campoSenha);
         campoSenha2 = (AutoCompleteTextView) findViewById(R.id.campoSenha2);
 
+        campoNascimento = (AutoCompleteTextView) findViewById(R.id.campoNascimento);
+        campoNascimento.addTextChangedListener(Mask.insert(Mask.DATA_MASK, campoNascimento));
+
+
+        spinnerSexo = (Spinner) findViewById(R.id.spinnerSexo);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.spinner_sexo, android.R.layout.simple_spinner_item); // Adapter para o spinner
+        adapter.setDropDownViewResource(android.R.layout.simple_expandable_list_item_1); // Tipo de Layout para o spinner
+        spinnerSexo.setAdapter(adapter); // Aplicando o adapter
+
         Button botaoProximo = (Button) findViewById(R.id.botaoProximo);
         botaoProximo.setOnClickListener(new View.OnClickListener() { // Ação do botão Proximo
                                             @Override
                                             public void onClick(View v) {
-                                                if (verificaCampos()){
+                                                if (verificaCampos()) {
+                                                    cliente.setNome(campoNome.getText().toString());
+                                                    cliente.setCpf(campoCPF.getText().toString());
+                                                    cliente.setEmail(campoEmail.getText().toString());
+                                                    cliente.setTelefone(campoTelefone.getText().toString());
+                                                    cliente.setSenha(campoSenha1.getText().toString());
+                                                    cliente.setSexo(spinnerSexo.getSelectedItem().toString());
+                                                    cliente.setDataNascimento(sqlToString(campoNascimento.getText().toString()));
+                                                    cliente.setDataCadastro(new Date(new java.util.Date().getTime()));
                                                     Intent intent = new Intent(context, CadastroEndereco.class);
                                                     startActivity(intent);
                                                 }
@@ -49,6 +79,15 @@ public class CadastroActivity extends AppCompatActivity {
         );
     }
 
+
+    public static Date sqlToString(String data) {
+        DateFormat fmt = new SimpleDateFormat("dd/MM/yyyy");
+        try {
+            return new Date(fmt.parse(data).getTime());
+        } catch (ParseException e) {
+            return null;
+        }
+    }
 
     private boolean verificaCampos() { // Método para verificar se os campos estão vazios
 
@@ -76,6 +115,12 @@ public class CadastroActivity extends AppCompatActivity {
         if (TextUtils.isEmpty(campoTelefone.getText().toString())) {
             campoTelefone.setError(getString(R.string.error_field_required));
             focusView = campoTelefone;
+            aux = true;
+        }
+
+        if (TextUtils.isEmpty(campoNascimento.getText().toString())) {
+            campoNascimento.setError(getString(R.string.error_field_required));
+            focusView = campoNascimento;
             aux = true;
         }
 
