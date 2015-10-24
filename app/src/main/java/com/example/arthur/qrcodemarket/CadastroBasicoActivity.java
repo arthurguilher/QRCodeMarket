@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Html;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -17,7 +16,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-public class CadastroActivity extends AppCompatActivity {
+public class CadastroBasicoActivity extends AppCompatActivity {
 
     private final Context context = this;
     private AutoCompleteTextView campoCPF;
@@ -63,6 +62,7 @@ public class CadastroActivity extends AppCompatActivity {
                                             @Override
                                             public void onClick(View v) {
                                                 if (verificaCampos()) {
+                                                    cliente = new Cliente();
                                                     cliente.setNome(campoNome.getText().toString());
                                                     cliente.setCpf(campoCPF.getText().toString());
                                                     cliente.setEmail(campoEmail.getText().toString());
@@ -71,7 +71,7 @@ public class CadastroActivity extends AppCompatActivity {
                                                     cliente.setSexo(spinnerSexo.getSelectedItem().toString());
                                                     cliente.setDataNascimento(sqlToString(campoNascimento.getText().toString()));
                                                     cliente.setDataCadastro(new Date(new java.util.Date().getTime()));
-                                                    Intent intent = new Intent(context, CadastroEndereco.class);
+                                                    Intent intent = new Intent(context, CadastroEnderecoActivity.class);
                                                     startActivity(intent);
                                                 }
                                             }

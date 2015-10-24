@@ -22,9 +22,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CadastroActivity" >
+        <activity android:name=".CadastroBasicoActivity" >
         </activity>
-        <activity android:name=".CadastroEndereco" >
+        <activity android:name=".CadastroEnderecoActivity" >
+        </activity>
+        <activity android:name=".CadastroPagamentoActivity" >
         </activity>
     </application>
 
