@@ -58,7 +58,7 @@ public class ClienteControlador  extends SQLiteOpenHelper {
                 + ")";
         db.execSQL(CRIAR_TABELA_CLIENTES);
     }
-
+//
     @Override
     public void onUpgrade(SQLiteDatabase db, int arg1, int arg2) {
         db.execSQL("DROP TABLE IF EXISTS " + TABELA_CLIENTE);
