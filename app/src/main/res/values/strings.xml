@@ -24,4 +24,5 @@
     <string-array name="spinner_uf">
         <item>PE</item>
     </string-array>
+    <string name="title_activity_menu">Menu</string>
 </resources>

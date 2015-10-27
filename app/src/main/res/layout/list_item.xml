@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="4dp"
+    tools:context=".CarrinhoActivity">
+
+    <LinearLayout
+        android:id="@+id/form_cadastro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right">
+
+            <TextView
+                android:id="@+id/descricao_produto"
+                android:layout_width="0dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_weight=".93"
+                android:text="Descrição:"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/botao_deletar"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/botao_editar"
+                android:layout_weight=".10"
+                android:background="#99CC"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:textColor="#FFFFFF"
+                android:drawableLeft="@android:drawable/ic_menu_delete"
+                android:textAlignment="center"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right">
+
+            <TextView
+                android:id="@+id/quantidade"
+                android:layout_weight=".70"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:gravity="left"
+                android:text="Quantidade:"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="20sp"
+                />
+
+
+            <Button
+                android:id="@+id/botao_aumentar"
+                android:layout_weight=".15"
+                android:layout_width="5dp"
+                android:layout_height="35dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:background="#99CC"
+                android:textAlignment="center"
+                android:focusableInTouchMode="false"
+                android:text="+"
+                android:textColor="#FFFFFF"
+                android:textSize="30sp"/>
+
+            <TextView
+                android:id="@+id/campoQuantidade"
+                android:layout_width="5dp"
+                android:layout_weight=".20"
+                android:inputType="number"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:textSize="30sp"
+                android:textAlignment="center"/>
+
+            <Button
+                android:id="@+id/botao_diminuir"
+                android:layout_weight=".15"
+                android:layout_width="5dp"
+                android:layout_height="35dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:background="#99CC"
+                android:focusableInTouchMode="false"
+                android:text="–"
+                android:textColor="#FFFFFF"
+                android:textSize="30sp"
+                android:textAlignment="center"/>
+
+        </TableRow>
+
+
+
+        <TextView
+            android:id="@+id/valor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginTop="13dp"
+            android:text="Valor (unidade):"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+
+</LinearLayout>

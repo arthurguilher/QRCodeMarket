@@ -183,7 +183,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             cancel = true;
         }
 
-        // Check for a valid email address.
+        // Check for a valid email quantidade.
         if (TextUtils.isEmpty(cpf)) {
             mEmailView.setError(getString(R.string.error_field_required));
             focusView = mEmailView;
@@ -204,6 +204,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             showProgress(true);
             mAuthTask = new UserLoginTask(cpf, password);
             mAuthTask.execute((Void) null);
+            Intent intent = new Intent(context, MenuActivity.class);
+            startActivity(intent);
         }
     }
 
@@ -267,7 +269,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 .CONTENT_ITEM_TYPE},
 
                 // Show primary email addresses first. Note that there won't be
-                // a primary email address if the user hasn't specified one.
+                // a primary email quantidade if the user hasn't specified one.
                 ContactsContract.Contacts.Data.IS_PRIMARY + " DESC");
     }
 
