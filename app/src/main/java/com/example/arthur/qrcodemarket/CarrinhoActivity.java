@@ -120,7 +120,7 @@ public class CarrinhoActivity extends AppCompatActivity {
             }
         }
     }
-
+//
     public static void modificarValor(double valor, boolean operacao){
         if (operacao) { // Se a operação for somar (adicionando produto à lista)
             valorTotal = valorTotal + valor;
