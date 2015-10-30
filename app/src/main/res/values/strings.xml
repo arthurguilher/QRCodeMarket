@@ -25,4 +25,7 @@
         <item>PE</item>
     </string-array>
     <string name="title_activity_menu">Menu</string>
+    <string name="title_activity_config_info">ConfigInfoActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
 </resources>

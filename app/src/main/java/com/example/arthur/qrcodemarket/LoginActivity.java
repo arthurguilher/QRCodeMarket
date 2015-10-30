@@ -46,6 +46,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
      * Id to identity READ_CONTACTS permission request.
      */
     private static final int REQUEST_READ_CONTACTS = 0;
+    private static Cliente cliente;
 
     /**
      * A dummy authentication store containing known user names and passwords.
@@ -60,8 +61,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private UserLoginTask mAuthTask = null;
 
     // UI references.
-    private AutoCompleteTextView mEmailView;
-    private EditText mPasswordView;
+    private AutoCompleteTextView campoCpf;
+    private EditText campoSenha;
     private View mProgressView;
     private View mLoginFormView;
     private final Context context = this;
@@ -71,11 +72,12 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         // Set up the login form.
-        mEmailView = (AutoCompleteTextView) findViewById(R.id.campoCPF);
+        campoCpf = (AutoCompleteTextView) findViewById(R.id.campoCPF);
+        campoCpf.addTextChangedListener(Mask.insert(Mask.CPF_MASK, campoCpf));
         populateAutoComplete();
 
-        mPasswordView = (EditText) findViewById(R.id.password);
-        mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+        campoSenha = (EditText) findViewById(R.id.password);
+        campoSenha.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
                 if (id == R.id.login || id == EditorInfo.IME_NULL) {
@@ -127,7 +129,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             return true;
         }
         if (shouldShowRequestPermissionRationale(READ_CONTACTS)) {
-            Snackbar.make(mEmailView, R.string.permission_rationale, Snackbar.LENGTH_INDEFINITE)
+            Snackbar.make(campoCpf, R.string.permission_rationale, Snackbar.LENGTH_INDEFINITE)
                     .setAction(android.R.string.ok, new View.OnClickListener() {
                         @Override
                         @TargetApi(Build.VERSION_CODES.M)
@@ -166,33 +168,40 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         }
 
         // Reset errors.
-        mEmailView.setError(null);
-        mPasswordView.setError(null);
+        campoCpf.setError(null);
+        campoSenha.setError(null);
 
         // Store values at the time of the login attempt.
-        String cpf = mEmailView.getText().toString();
-        String password = mPasswordView.getText().toString();
+        String cpf = campoCpf.getText().toString();
+        String senha = campoSenha.getText().toString();
 
+        ClienteControlador db = new ClienteControlador(context, null, null, 1);
+        cliente = db.loginCliente(cpf, senha);
         boolean cancel = false;
         View focusView = null;
 
         // Check for a valid password, if the user entered one.
-        if (!TextUtils.isEmpty(password) && !isPasswordValid(password)) {
-            mPasswordView.setError(getString(R.string.error_invalid_password));
-            focusView = mPasswordView;
+        if (!TextUtils.isEmpty(senha) && !isPasswordValid(senha)) {
+            campoSenha.setError(getString(R.string.error_invalid_password));
+            focusView = campoSenha;
             cancel = true;
         }
 
         // Check for a valid email quantidade.
         if (TextUtils.isEmpty(cpf)) {
-            mEmailView.setError(getString(R.string.error_field_required));
-            focusView = mEmailView;
+            campoCpf.setError(getString(R.string.error_field_required));
+            focusView = campoCpf;
             cancel = true;
         } /*else if (!isEmailValid(email)) {
-            mEmailView.setError(getString(R.string.error_invalid_email));
-            focusView = mEmailView;
+            campoCpf.setError(getString(R.string.error_invalid_email));
+            focusView = campoCpf;
             cancel = true;
         }*/
+        if (cliente.getCpf() == null) {
+            campoCpf.setError("CPF ou senha incorreto");
+            focusView = campoCpf;
+            cancel = true;
+        }
 
         if (cancel) {
             // There was an error; don't attempt login and focus the first
@@ -201,11 +210,14 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         } else {
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
+
             showProgress(true);
-            mAuthTask = new UserLoginTask(cpf, password);
+            mAuthTask = new UserLoginTask(cpf, senha);
             mAuthTask.execute((Void) null);
             Intent intent = new Intent(context, MenuActivity.class);
             startActivity(intent);
+            finish();
+
         }
     }
 
@@ -216,7 +228,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
     private boolean isPasswordValid(String password) {
         //TODO: Replace this with your own logic
-        return password.length() > 4;
+        return password.length() >= 4 ;
     }
 
     /**
@@ -307,7 +319,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 new ArrayAdapter<>(LoginActivity.this,
                         android.R.layout.simple_dropdown_item_1line, emailAddressCollection);
 
-        mEmailView.setAdapter(adapter);
+        campoCpf.setAdapter(adapter);
     }
 
     /**
@@ -355,8 +367,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             if (success) {
                 finish();
             } else {
-                mPasswordView.setError(getString(R.string.error_incorrect_password));
-                mPasswordView.requestFocus();
+                campoSenha.setError(getString(R.string.error_incorrect_password));
+                campoSenha.requestFocus();
             }
         }
 

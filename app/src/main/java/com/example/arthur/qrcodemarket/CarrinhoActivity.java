@@ -3,36 +3,40 @@ package com.example.arthur.qrcodemarket;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 
 public class CarrinhoActivity extends AppCompatActivity {
 
-    ListView listview;
-    CarrinhoArrayAdapter carrinhoArrayAdapter;
-    ArrayList<Produto> listaProdutos = new ArrayList<Produto>();
+    static final String ACTION_SCAN = "com.google.zxing.client.android.SCAN";
+    private ListView listview;
+    private Context context = this;
+    private CarrinhoArrayAdapter carrinhoArrayAdapter;
+    private ArrayList<Produto> listaProdutos = new ArrayList<Produto>();
+    private int aux = 0;
+    private static TextView textoTotal;
+    private static double valorTotal = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_carrinho);
-        setTitle("Nova compra");
+        setTitle("Nova Compra");
 
-
-
+        textoTotal = (TextView) findViewById(R.id.textoTotal);
         carrinhoArrayAdapter = new CarrinhoArrayAdapter(CarrinhoActivity.this, R.layout.list_item, listaProdutos);
-        listview= (ListView) findViewById(R.id.listView);
+        listview = (ListView) findViewById(R.id.listView);
         listview.setItemsCanFocus(false);
         listview.setAdapter(carrinhoArrayAdapter);
 
@@ -41,7 +45,6 @@ public class CarrinhoActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View v,
                                     final int position, long id) {
-
                 Toast.makeText(CarrinhoActivity.this,
                         "List Item Clicked:" + position, Toast.LENGTH_LONG)
                         .show();
@@ -49,8 +52,6 @@ public class CarrinhoActivity extends AppCompatActivity {
         });
 
     }
-
-    static final String ACTION_SCAN = "com.google.zxing.client.android.SCAN";
 
 
     //product barcode mode
@@ -73,6 +74,7 @@ public class CarrinhoActivity extends AppCompatActivity {
             Intent intent = new Intent(ACTION_SCAN);
             intent.putExtra("SCAN_MODE", "QR_CODE_MODE");
             startActivityForResult(intent, 0);
+
         } catch (ActivityNotFoundException anfe) {
             //on catch, show the download dialog
             showDialog(CarrinhoActivity.this, "No Scanner Found", "Download a scanner code activity?", "Yes", "No").show();
@@ -111,10 +113,43 @@ public class CarrinhoActivity extends AppCompatActivity {
                 String format = intent.getStringExtra("SCAN_RESULT_FORMAT");
                 String retornoQR[] = contents.split("\\?");
                 listaProdutos.add(new Produto(retornoQR[0], Float.parseFloat(retornoQR[1]), 1));
+                modificarValor(Float.parseFloat(retornoQR[1]), true);
                 //Toast toast = Toast.makeText(this, "Content:" + contents + " Format:" + format, Toast.LENGTH_LONG);
                 //toast.show();
 
             }
         }
     }
+
+    public static void modificarValor(double valor, boolean operacao){
+        if (operacao) { // Se a operação for somar (adicionando produto à lista)
+            valorTotal = valorTotal + valor;
+        } else { // Se a operação for diminuir (remover produto da lista)
+            valorTotal = valorTotal - valor;
+        }
+        textoTotal.setText("Total: R$: " + String.valueOf(String.format("%.2f", valorTotal)).replace(".", ",")); // Formata o float para duas casas decimais e substitui o ponto pela vírgula
+    }
+
+    public static void excluirValor(double valor, int quantidade){
+        valorTotal = valorTotal - (valor * quantidade);
+        textoTotal.setText("Total: R$: " + String.valueOf(String.format("%.2f", valorTotal)).replace(".", ","));
+    }
+
+    @Override
+    public void onBackPressed(){
+        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                switch (which) {
+                    case DialogInterface.BUTTON_POSITIVE: // Caso clique em sim
+                        finish();
+                        break;
+                    case DialogInterface.BUTTON_NEGATIVE: // Caso clique em não
+                        break;
+                }
+            }
+        };
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setMessage("Tem certeza que deseja desistir desta compra?").setPositiveButton("Sim", dialogClickListener).setNegativeButton("Não", dialogClickListener).show();
+    }
+
 }

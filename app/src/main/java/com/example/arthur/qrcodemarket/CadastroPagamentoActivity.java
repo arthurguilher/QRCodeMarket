@@ -24,6 +24,8 @@ public class CadastroPagamentoActivity extends AppCompatActivity {
         botaoFinalizar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ClienteControlador db = new ClienteControlador(context, null, null, 1);
+                db.cadastrarCliente(CadastroBasicoActivity.cliente);
                 Toast.makeText(context, "Cadastro realizado com sucesso. Agora você já pode entrar!", Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(CadastroPagamentoActivity.this, LoginActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -45,6 +47,8 @@ public class CadastroPagamentoActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
                 switch (which) {
                     case DialogInterface.BUTTON_POSITIVE:
+                        ClienteControlador db = new ClienteControlador(context, null, null, 1);
+                        db.cadastrarCliente(CadastroBasicoActivity.cliente);
                         Toast.makeText(context, "Cadastro realizado com sucesso. Agora você já pode entrar!", Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(CadastroPagamentoActivity.this, LoginActivity.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // "Limpa" todas as Activity criadas e volta para a principal
