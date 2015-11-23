@@ -1,4 +1,4 @@
-package com.example.arthur.qrcodemarket;
+package com.example.arthur.qrcodemarket.entidades;
 
 import java.sql.Date;
 

@@ -1,10 +1,12 @@
-package com.example.arthur.qrcodemarket;
+package com.example.arthur.qrcodemarket.fragments;
 
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.example.arthur.qrcodemarket.R;
 
 /**
  * Created by Arthur on 29/10/2015.

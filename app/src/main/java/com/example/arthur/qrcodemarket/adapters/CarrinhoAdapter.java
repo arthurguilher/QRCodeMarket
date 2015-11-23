@@ -1,35 +1,41 @@
-package com.example.arthur.qrcodemarket;
+package com.example.arthur.qrcodemarket.adapters;
 
 /**
  * Created by Arthur on 26/10/2015.
  */
 
+import java.io.InputStream;
 import java.util.ArrayList;
 
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import org.w3c.dom.Text;
+import com.example.arthur.qrcodemarket.CarrinhoActivity;
+import com.example.arthur.qrcodemarket.R;
+import com.example.arthur.qrcodemarket.entidades.Produto;
 
-public class CarrinhoArrayAdapter extends ArrayAdapter<Produto> {
+public class CarrinhoAdapter extends ArrayAdapter<Produto> {
 
     private Context context;
     private int layoutResourceId;
     private ArrayList<Produto> listaProdutos = new ArrayList<Produto>();
 
-    public CarrinhoArrayAdapter(Context context, int layoutResourceId,
-                          ArrayList<Produto> listaProdutos) {
+    public CarrinhoAdapter(Context context, int layoutResourceId,
+                           ArrayList<Produto> listaProdutos) {
         super(context, layoutResourceId, listaProdutos);
         this.layoutResourceId = layoutResourceId;
         this.context = context;
@@ -48,12 +54,13 @@ public class CarrinhoArrayAdapter extends ArrayAdapter<Produto> {
             item = inflater.inflate(layoutResourceId, parent, false);
 
             ProdutoWrapper = new ProdutoWrapper();
-            ProdutoWrapper.name = (TextView) item.findViewById(R.id.descricao_produto);
-            ProdutoWrapper.valor = (TextView) item.findViewById(R.id.valor);
-            ProdutoWrapper.quantidade = (TextView) item.findViewById(R.id.campoQuantidade);
-            ProdutoWrapper.botao_aumentar = (Button) item.findViewById(R.id.botao_aumentar);
-            ProdutoWrapper.botao_diminuir = (Button) item.findViewById(R.id.botao_diminuir);
-            ProdutoWrapper.botao_deletar = (Button) item.findViewById(R.id.botao_deletar);
+            ProdutoWrapper.name = (TextView) item.findViewById(R.id.carrinho_nome_produto);
+            ProdutoWrapper.descricao = (TextView) item.findViewById(R.id.carrinho_subdescricao_produto);
+            ProdutoWrapper.valor = (TextView) item.findViewById(R.id.carrinho_valor_produto);
+            ProdutoWrapper.quantidade = (TextView) item.findViewById(R.id.carrinho_quantidade_produto);
+            ProdutoWrapper.botao_aumentar = (Button) item.findViewById(R.id.carrinho_botao_aumentar);
+            ProdutoWrapper.botao_diminuir = (Button) item.findViewById(R.id.carrinho_botao_diminuir);
+            ProdutoWrapper.botao_deletar = (Button) item.findViewById(R.id.carrinho_botao_deletar);
             item.setTag(ProdutoWrapper);
         } else {
             ProdutoWrapper = (ProdutoWrapper) item.getTag();
@@ -61,9 +68,12 @@ public class CarrinhoArrayAdapter extends ArrayAdapter<Produto> {
 
         final Produto produto = listaProdutos.get(position);
         ProdutoWrapper.name.setText(produto.getName());
+        ProdutoWrapper.descricao.setText(produto.getDescricao());
         ProdutoWrapper.valor.setText("Valor (unidade): R$: " + String.valueOf(produto.getValor()));
         ProdutoWrapper.quantidade.setText(String.valueOf(produto.getQuantidade()));
-        final CarrinhoArrayAdapter.ProdutoWrapper finalProdutoWrapper = ProdutoWrapper;
+        new DownloadImageTask((ImageView) item.findViewById(R.id.carrinho_foto_produto))
+                .execute(produto.getFoto());
+        final CarrinhoAdapter.ProdutoWrapper finalProdutoWrapper = ProdutoWrapper;
 
         ProdutoWrapper.botao_aumentar.setOnClickListener(new OnClickListener() {
 
@@ -109,11 +119,37 @@ public class CarrinhoArrayAdapter extends ArrayAdapter<Produto> {
         TextView name;
         TextView valor;
         TextView quantidade;
+        TextView descricao;
+        ImageView foto;
         Button botao_aumentar;
         Button botao_diminuir;
         Button botao_deletar;
     }
 
+    private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
+        ImageView bmImage;
+
+        public DownloadImageTask(ImageView bmImage) {
+            this.bmImage = bmImage;
+        }
+
+        protected Bitmap doInBackground(String... urls) {
+            String urldisplay = urls[0];
+            Bitmap mIcon11 = null;
+            try {
+                InputStream in = new java.net.URL(urldisplay).openStream();
+                mIcon11 = BitmapFactory.decodeStream(in);
+            } catch (Exception e) {
+                Log.e("Error", e.getMessage());
+                e.printStackTrace();
+            }
+            return mIcon11;
+        }
+
+        protected void onPostExecute(Bitmap result) {
+            bmImage.setImageBitmap(result);
+        }
+    }
 
     private void confirmationMessage(final int id, final Produto produto) { // Método para mostrar dialog de confirmação para pular etapa
         DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {

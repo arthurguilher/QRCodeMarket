@@ -11,6 +11,9 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.Spinner;
 
+import com.example.arthur.qrcodemarket.entidades.Cliente;
+import com.example.arthur.qrcodemarket.util.Mask;
+
 import java.sql.Date;
 import java.text.DateFormat;
 import java.text.ParseException;

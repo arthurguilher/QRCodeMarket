@@ -1,4 +1,4 @@
-package com.example.arthur.qrcodemarket; /**
+package com.example.arthur.qrcodemarket.util; /**
  * Created by Arthur on 18/10/2015.
  */
 import android.text.Editable;

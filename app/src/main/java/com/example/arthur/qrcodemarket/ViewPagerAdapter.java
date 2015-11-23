@@ -4,10 +4,13 @@ package com.example.arthur.qrcodemarket;
  * Created by Arthur on 29/10/2015.
  */
 
-import android.app.ActionBar.Tab;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+
+import com.example.arthur.qrcodemarket.fragments.CadastroBasicoFragment;
+import com.example.arthur.qrcodemarket.fragments.CadastroEnderecoFragment;
+import com.example.arthur.qrcodemarket.fragments.CadastroPagamentoFragment;
 
 public class ViewPagerAdapter extends FragmentStatePagerAdapter {
 

@@ -6,6 +6,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.example.arthur.qrcodemarket.entidades.Cliente;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 

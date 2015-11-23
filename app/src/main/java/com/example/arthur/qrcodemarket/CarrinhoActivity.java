@@ -15,6 +15,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.arthur.qrcodemarket.adapters.CarrinhoAdapter;
+import com.example.arthur.qrcodemarket.entidades.Produto;
+
 import java.util.ArrayList;
 
 public class CarrinhoActivity extends AppCompatActivity {
@@ -22,7 +25,7 @@ public class CarrinhoActivity extends AppCompatActivity {
     static final String ACTION_SCAN = "com.google.zxing.client.android.SCAN";
     private ListView listview;
     private Context context = this;
-    private CarrinhoArrayAdapter carrinhoArrayAdapter;
+    private CarrinhoAdapter carrinhoArrayAdapter;
     private ArrayList<Produto> listaProdutos = new ArrayList<Produto>();
     private int aux = 0;
     private static TextView textoTotal;
@@ -35,7 +38,7 @@ public class CarrinhoActivity extends AppCompatActivity {
         setTitle("Nova Compra");
 
         textoTotal = (TextView) findViewById(R.id.textoTotal);
-        carrinhoArrayAdapter = new CarrinhoArrayAdapter(CarrinhoActivity.this, R.layout.list_item, listaProdutos);
+        carrinhoArrayAdapter = new CarrinhoAdapter(CarrinhoActivity.this, R.layout.list_item, listaProdutos);
         listview = (ListView) findViewById(R.id.listView);
         listview.setItemsCanFocus(false);
         listview.setAdapter(carrinhoArrayAdapter);
@@ -112,8 +115,9 @@ public class CarrinhoActivity extends AppCompatActivity {
                 String contents = intent.getStringExtra("SCAN_RESULT");
                 String format = intent.getStringExtra("SCAN_RESULT_FORMAT");
                 String retornoQR[] = contents.split("\\?");
-                listaProdutos.add(new Produto(retornoQR[0], Float.parseFloat(retornoQR[1]), 1));
-                modificarValor(Float.parseFloat(retornoQR[1]), true);
+                // nome_produto?descricao_produto?3.22?http://foto
+                listaProdutos.add(new Produto(retornoQR[0], retornoQR[1], Float.parseFloat(retornoQR[2]), 1, retornoQR[3]));
+                modificarValor(Float.parseFloat(retornoQR[2]), true);
                 //Toast toast = Toast.makeText(this, "Content:" + contents + " Format:" + format, Toast.LENGTH_LONG);
                 //toast.show();
 

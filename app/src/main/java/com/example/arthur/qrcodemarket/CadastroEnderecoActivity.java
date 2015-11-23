@@ -13,6 +13,8 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.Spinner;
 
+import com.example.arthur.qrcodemarket.util.Mask;
+
 public class CadastroEnderecoActivity extends AppCompatActivity {
 
     private AutoCompleteTextView campoCEP;
