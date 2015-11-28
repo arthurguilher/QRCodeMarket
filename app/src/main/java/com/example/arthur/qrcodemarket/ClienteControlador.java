@@ -10,6 +10,8 @@ import com.example.arthur.qrcodemarket.entidades.Cliente;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Arthur on 24/10/2015.
@@ -96,7 +98,7 @@ public class ClienteControlador extends SQLiteOpenHelper {
     }
 
     public Cliente loginCliente(String cpf, String senha) {
-        String query = "SELECT * FROM " + TABELA_CLIENTE + " WHERE cpf = '" + cpf + "' AND senha = '" + senha+ "'";
+        String query = "SELECT * FROM " + TABELA_CLIENTE + " WHERE cpf = '" + cpf + "' AND senha = '" + senha + "'";
         Cliente cliente = new Cliente();
         DateFormat df = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
         SQLiteDatabase db = this.getWritableDatabase();
@@ -117,11 +119,74 @@ public class ClienteControlador extends SQLiteOpenHelper {
                 cliente.setComplemento(cursor.getString(11));
                 cliente.setCep(cursor.getString(12));
                 cliente.setNumeroCasa(Integer.parseInt(cursor.getString(13)));
-                cliente.setDataNascimento(CadastroBasicoActivity.sqlToString(cursor.getString(14)));
-                cliente.setDataCadastro(CadastroBasicoActivity.sqlToString(cursor.getString(15)));
+                cliente.setDataNascimento(CadastroActivity.sqlToString(cursor.getString(14)));
+                cliente.setDataCadastro(CadastroActivity.sqlToString(cursor.getString(15)));
                 cursor.moveToNext();
             }
         }
         return cliente;
+    }
+
+    public Cliente buscarCliente(String cpf) {
+        String query = "SELECT * FROM " + TABELA_CLIENTE + " WHERE cpf = '" + cpf + "'";
+        Cliente cliente = new Cliente();
+        DateFormat df = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
+        if (cursor.moveToFirst()) {
+            while (cursor.isAfterLast() == false) {
+                cliente.setId(Integer.parseInt(cursor.getString(0)));
+                cliente.setNome(cursor.getString(1));
+                cliente.setCpf(cursor.getString(2));
+                cliente.setEmail(cursor.getString(3));
+                cliente.setSenha(cursor.getString(4));
+                cliente.setTelefone(cursor.getString(5));
+                cliente.setSexo(cursor.getString(6));
+                cliente.setEstado(cursor.getString(7));
+                cliente.setCidade(cursor.getString(8));
+                cliente.setBairro(cursor.getString(9));
+                cliente.setLogradouro(cursor.getString(10));
+                cliente.setComplemento(cursor.getString(11));
+                cliente.setCep(cursor.getString(12));
+                cliente.setNumeroCasa(Integer.parseInt(cursor.getString(13)));
+                cliente.setDataNascimento(CadastroActivity.sqlToString(cursor.getString(14)));
+                cliente.setDataCadastro(CadastroActivity.sqlToString(cursor.getString(15)));
+                cursor.moveToNext();
+            }
+        }
+        return cliente;
+    }
+
+    public List<Cliente> listarClientes() {
+        List<Cliente> clientes = new ArrayList<>();
+        String query = "SELECT * FROM " + TABELA_CLIENTE;
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
+        if (cursor.moveToFirst()) {
+            while (cursor.isAfterLast() == false) {
+                Cliente cliente = new Cliente();
+                cliente.setId(Integer.parseInt(cursor.getString(0)));
+                cliente.setNome(cursor.getString(1));
+                cliente.setCpf(cursor.getString(2));
+                cliente.setEmail(cursor.getString(3));
+                cliente.setSenha(cursor.getString(4));
+                cliente.setTelefone(cursor.getString(5));
+                cliente.setSexo(cursor.getString(6));
+                cliente.setEstado(cursor.getString(7));
+                cliente.setCidade(cursor.getString(8));
+                cliente.setBairro(cursor.getString(9));
+                cliente.setLogradouro(cursor.getString(10));
+                cliente.setComplemento(cursor.getString(11));
+                cliente.setCep(cursor.getString(12));
+                cliente.setNumeroCasa(Integer.parseInt(cursor.getString(13)));
+                cliente.setDataNascimento(CadastroActivity.sqlToString(cursor.getString(14)));
+                cliente.setDataCadastro(CadastroActivity.sqlToString(cursor.getString(15)));
+                clientes.add(cliente);
+                cursor.moveToNext();
+            }
+        }
+        cursor.close();
+        db.close();
+        return clientes;
     }
 }

@@ -4,8 +4,8 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -17,6 +17,7 @@ import com.example.arthur.qrcodemarket.util.Mask;
 
 public class CadastroEnderecoActivity extends AppCompatActivity {
 
+    private final Context context = this;
     private AutoCompleteTextView campoCEP;
     private AutoCompleteTextView campoLogradouro;
     private AutoCompleteTextView campoNumeroResidencia;
@@ -24,7 +25,6 @@ public class CadastroEnderecoActivity extends AppCompatActivity {
     private AutoCompleteTextView campoCidade;
     private Spinner campoUF;
     private AutoCompleteTextView campoComplemento;
-    private final Context context = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,15 +53,15 @@ public class CadastroEnderecoActivity extends AppCompatActivity {
                                             @Override
                                             public void onClick(View v) {
                                                 if (verificaCampos()) {
-                                                    CadastroBasicoActivity.cliente.setLogradouro(campoLogradouro.getText().toString());
-                                                    CadastroBasicoActivity.cliente.setNumeroCasa(Integer.parseInt(campoNumeroResidencia.getText().toString()));
-                                                    CadastroBasicoActivity.cliente.setCidade(campoCidade.getText().toString());
-                                                    CadastroBasicoActivity.cliente.setBairro(campoBairro.getText().toString());
-                                                    CadastroBasicoActivity.cliente.setCep(campoCEP.getText().toString());
-                                                    CadastroBasicoActivity.cliente.setComplemento(campoComplemento.getText().toString());
-                                                    CadastroBasicoActivity.cliente.setEstado(campoUF.getSelectedItem().toString());
-                                                    Intent intent = new Intent(context, CadastroPagamentoActivity.class);
-                                                    startActivity(intent);
+                                                   /* CadastroActivity.cliente.setLogradouro(campoLogradouro.getText().toString());
+                                                    CadastroActivity.cliente.setNumeroCasa(Integer.parseInt(campoNumeroResidencia.getText().toString()));
+                                                    CadastroActivity.cliente.setCidade(campoCidade.getText().toString());
+                                                    CadastroActivity.cliente.setBairro(campoBairro.getText().toString());
+                                                    CadastroActivity.cliente.setCep(campoCEP.getText().toString());
+                                                    CadastroActivity.cliente.setComplemento(campoComplemento.getText().toString());
+                                                    CadastroActivity.cliente.setEstado(campoUF.getSelectedItem().toString());
+                                                    Intent intent = new Intent(context, CadastroPagamentoActivity.class);*/
+                                                    //startActivity(intent);
                                                 }
                                             }
                                         }

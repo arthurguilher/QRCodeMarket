@@ -4,8 +4,8 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -25,7 +25,7 @@ public class CadastroPagamentoActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 ClienteControlador db = new ClienteControlador(context, null, null, 1);
-                db.cadastrarCliente(CadastroBasicoActivity.cliente);
+                //db.cadastrarCliente(CadastroActivity.cliente);
                 Toast.makeText(context, "Cadastro realizado com sucesso. Agora você já pode entrar!", Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(CadastroPagamentoActivity.this, LoginActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -48,7 +48,7 @@ public class CadastroPagamentoActivity extends AppCompatActivity {
                 switch (which) {
                     case DialogInterface.BUTTON_POSITIVE:
                         ClienteControlador db = new ClienteControlador(context, null, null, 1);
-                        db.cadastrarCliente(CadastroBasicoActivity.cliente);
+                        // db.cadastrarCliente(CadastroActivity.cliente);
                         Toast.makeText(context, "Cadastro realizado com sucesso. Agora você já pode entrar!", Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(CadastroPagamentoActivity.this, LoginActivity.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // "Limpa" todas as Activity criadas e volta para a principal
