@@ -17,119 +17,147 @@
         android:layout_weight="1"
         android:orientation="vertical">
 
-        <TableRow
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:weightSum="1">
-
-            <AutoCompleteTextView
-                android:id="@+id/campoLogradouro"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:layout_weight=".78"
-                android:hint="Logradouro"
-                android:inputType="text"
-                android:maxLines="1"
-                android:singleLine="true" />
-
-            <AutoCompleteTextView
-                android:id="@+id/campoNumeroResidencia"
-                android:layout_width="0dp"
-                android:layout_marginTop="30dp"
-                android:layout_weight=".22"
-                android:hint="Número"
-                android:inputType="number"
-                android:maxLines="1"
-                android:singleLine="true" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:weightSum="1">
-
-
-            <AutoCompleteTextView
-                android:id="@+id/campoBairro"
-                android:layout_width="0dp"
-                android:layout_weight=".40"
-                android:hint="Bairro"
-                android:inputType="text"
-                android:maxLines="1"
-                android:singleLine="true" />
-
-            <AutoCompleteTextView
-                android:id="@+id/campoCidade"
-                android:layout_width="0dp"
-                android:layout_weight=".38"
-                android:hint="Cidade"
-                android:inputType="text"
-                android:maxLines="1"
-                android:singleLine="true" />
-
-            <Spinner
-                android:id="@+id/spinnerUF"
-                android:layout_width="0dp"
-                android:layout_gravity="right"
-                android:layout_weight=".22"
-                android:spinnerMode="dialog" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:weightSum="1">
-
-            <AutoCompleteTextView
-                android:id="@+id/campoCEP"
-                android:layout_width="0dp"
-                android:layout_weight=".30"
-                android:hint="CEP"
-                android:inputType="number"
-                android:maxLines="1"
-                android:singleLine="true" />
-
-            <AutoCompleteTextView
-                android:id="@+id/campoComplemento"
-                android:layout_width="0dp"
-                android:layout_weight=".70"
-                android:hint="Complemento"
-                android:inputType="text"
-                android:maxLines="1"
-                android:singleLine="true" />
-
-        </TableRow>
-
-        <TableRow
+        <TextView
+            android:id="@+id/textTitulo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:layout_marginTop="30dp">
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:text="Informações de endereço"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
 
-            <Button
-                android:id="@+id/botaoCancelar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="left"
-                android:text="Cancelar" />
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:weightSum="1">
 
-            <Button
-                android:id="@+id/botaoPular"
-                android:layout_width="wrap_content"
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:text="Pular" />
+                android:layout_weight=".80">
 
-            <Button
-                android:id="@+id/botaoProximo"
-                android:layout_width="wrap_content"
+                <AutoCompleteTextView
+                    android:id="@+id/campoLogradouro"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Logradouro"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:singleLine="true" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:text="Próximo" />
+                android:layout_weight=".20">
+
+                <AutoCompleteTextView
+                    android:id="@+id/campoNumeroResidencia"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Nº"
+                    android:inputType="number"
+                    android:maxLines="1"
+                    android:singleLine="true" />
+            </android.support.design.widget.TextInputLayout>
         </TableRow>
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:weightSum="1">
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".45">
+
+                <AutoCompleteTextView
+                    android:id="@+id/campoBairro"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Bairro"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:singleLine="true" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".45">
+
+                <AutoCompleteTextView
+                    android:id="@+id/campoCidade"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Cidade"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:singleLine="true" />
+            </android.support.design.widget.TextInputLayout>
+
+            <TextView
+                android:id="@+id/textUf"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="0.10"
+                android:text="PE"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:weightSum="1">
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".30">
+
+                <AutoCompleteTextView
+                    android:id="@+id/campoCEP"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="CEP"
+                    android:inputType="number"
+                    android:maxLines="1"
+                    android:singleLine="true" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".70">
+
+                <AutoCompleteTextView
+                    android:id="@+id/campoComplemento"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".70"
+                    android:hint="Complemento"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:singleLine="true" />
+            </android.support.design.widget.TextInputLayout>
+
+        </TableRow>
+
+        <Button
+            android:id="@+id/botaoCadastrar"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:background="@color/red_400"
+            android:text="Cadastrar"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
     </LinearLayout>
 </LinearLayout>
