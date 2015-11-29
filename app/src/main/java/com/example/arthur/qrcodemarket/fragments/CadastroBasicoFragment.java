@@ -16,7 +16,6 @@ import com.example.arthur.qrcodemarket.R;
 public class CadastroBasicoFragment extends Fragment {
 
     private AutoCompleteTextView campoNome;
-    //
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -25,6 +24,7 @@ public class CadastroBasicoFragment extends Fragment {
         campoNome = (AutoCompleteTextView) rootView.findViewById(R.id.campoNome);
 
         Button botaoProximo = (Button) rootView.findViewById(R.id.botaoProximo);
+
         botaoProximo.setOnClickListener(new View.OnClickListener() { // Ação do botão Proximo
                                             @Override
                                             public void onClick(View v) {

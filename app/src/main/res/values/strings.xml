@@ -17,8 +17,8 @@
     </string-array>
     <string name="small_hint_senha"><font size="15">Senha</font></string>
     <string name="small_hint_senha2"><font size="15">Confirme a senha</font></string>
-    <string-array name="spinner_uf">
-        <item>PE</item>
-    </string-array>
     <string name="title_activity_menu">Menu</string>
+    <string name="infomacoes_basicas">Iasidjasd</string>
+    <string name="celular">Celular</string>
+    <string name="nascimento">Nascimento</string>
 </resources>
