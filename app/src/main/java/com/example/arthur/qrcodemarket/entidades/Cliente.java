@@ -1,11 +1,12 @@
 package com.example.arthur.qrcodemarket.entidades;
 
+import java.io.Serializable;
 import java.sql.Date;
 
 /**
  * Created by Arthur on 20/10/2015.
  */
-public class Cliente {
+public class Cliente implements Serializable {
 
     private String nome, cpf, email, senha, telefone, sexo, estado, cidade, bairro, logradouro, complemento, cep;
     private int id, numeroCasa;

@@ -16,10 +16,10 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".LoginActivity"
-            android:label="@string/app_name"></activity>
-        <activity android:name=".CadastroActivity"></activity>
-        <activity android:name=".CadastroEnderecoActivity"></activity>
-        <activity android:name=".CadastroPagamentoActivity"></activity>
+            android:label="@string/app_name" />
+        <activity android:name=".CadastroActivity" />
+        <activity android:name=".CadastroEnderecoActivity" />
+        <activity android:name=".CadastroPagamentoActivity" />
         <activity
             android:name=".MenuActivity"
             android:label="@string/title_activity_menu"
@@ -30,7 +30,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CarrinhoActivity"></activity>
+        <activity android:name=".CarrinhoActivity" />
+        <activity android:name=".LocalEntrega" />
+        <activity android:name=".ConfirmacaoActivity"></activity>
     </application>
 
 </manifest>

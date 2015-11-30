@@ -86,10 +86,8 @@ public class CadastroActivity extends AppCompatActivity {
                                                     cliente.setDataNascimento(sqlToString(campoNascimento.getText().toString()));
                                                     cliente.setDataCadastro(new Date(new java.util.Date().getTime()));
                                                     if (tipoEntrada == 1) {
-                                                        ClienteControlador clienteControlador = new ClienteControlador(context, null, null, 1);
-                                                        clienteControlador.cadastrarCliente(cliente);
-                                                        Intent intent = new Intent(context, MenuActivity.class);
-                                                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                                        Intent intent = new Intent(context, CadastroEnderecoActivity.class);
+                                                        intent.putExtra("Cliente", cliente);
                                                         startActivity(intent);
                                                         //finish();
                                                     }

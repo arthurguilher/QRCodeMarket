@@ -39,6 +39,7 @@
     <string name="bairro">Bairro</string>
     <string name="cidade">Cidade</string>
     <string name="estado">PE</string>
+    <string name="uf">UF</string>
     <!-- mais na frente a gente muda pra UF, e coloca a opcão dos estados. pq vai depender do estado que o usuario reside. -->
     <string name="cep">CEP</string>
     <string name="complemento">Complemento</string>
@@ -73,5 +74,12 @@
     <string name="botao_minhas_compras">Minhas Compras</string>
     <string name="botao_atualizar_dados">Atualizar Meus Dados</string>
     <string name="botao_config">Configurações</string>
+
+    <!-- Strings de Local de entrega -->
+    <string name="entregar_meu_endereco">Entregar no meu endereço</string>
+    <string name="entregar_outro_endereco">Entregar em outro endereço</string>
+    <string name="local_entrega">Local de entrega</string>
+
+    <string name="confirmacao_compra">Confirmação de compra</string>
 
 </resources>

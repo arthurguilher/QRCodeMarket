@@ -27,7 +27,7 @@
             android:text="@string/informacoes_de_endereco"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
-        <TableRow
+        <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="left"
@@ -62,9 +62,9 @@
                     android:maxLines="1"
                     android:singleLine="true" />
             </android.support.design.widget.TextInputLayout>
-        </TableRow>
+        </LinearLayout>
 
-        <TableRow
+        <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="left"
@@ -109,9 +109,9 @@
                 android:layout_weight="0.10"
                 android:text="@string/estado"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
-        </TableRow>
+        </LinearLayout>
 
-        <TableRow
+        <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="left"
@@ -148,7 +148,7 @@
                     android:singleLine="true" />
             </android.support.design.widget.TextInputLayout>
 
-        </TableRow>
+        </LinearLayout>
 
         <Button
             android:id="@+id/botaoCadastrar"

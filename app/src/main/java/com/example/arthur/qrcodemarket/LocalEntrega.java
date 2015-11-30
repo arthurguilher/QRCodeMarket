@@ -1,20 +1,24 @@
 package com.example.arthur.qrcodemarket;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
+import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.example.arthur.qrcodemarket.entidades.Cliente;
 import com.example.arthur.qrcodemarket.util.Mask;
 
-public class CadastroEnderecoActivity extends AppCompatActivity {
+public class LocalEntrega extends AppCompatActivity {
 
     private final Context context = this;
+    private Cliente cliente;
     private AutoCompleteTextView campoCEP;
     private AutoCompleteTextView campoLogradouro;
     private AutoCompleteTextView campoNumeroResidencia;
@@ -22,15 +26,13 @@ public class CadastroEnderecoActivity extends AppCompatActivity {
     private AutoCompleteTextView campoCidade;
     private TextView campoUF;
     private AutoCompleteTextView campoComplemento;
-    private Cliente cliente;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cadastro_endereco);
-        setTitle("Cadastro - Etapa 2 de 3");
+        setContentView(R.layout.activity_local_entrega);
 
-        cliente = (Cliente) getIntent().getSerializableExtra("Cliente");
+        cliente = MenuActivity.cliente;
 
         campoLogradouro = (AutoCompleteTextView) findViewById(R.id.campoLogradouro);
         campoNumeroResidencia = (AutoCompleteTextView) findViewById(R.id.campoNumeroResidencia);
@@ -41,26 +43,56 @@ public class CadastroEnderecoActivity extends AppCompatActivity {
         campoCEP = (AutoCompleteTextView) findViewById(R.id.campoCEP);
         campoCEP.addTextChangedListener(Mask.insert(Mask.CEP_MASK, campoCEP)); // Formatar campo do CEP
 
-        findViewById(R.id.botaoCadastrar).setOnClickListener(new View.OnClickListener() { // Ação do botão Proximo
-                                                                 @Override
-                                                                 public void onClick(View v) {
-                                                                     if (verificaCampos()) {
-                                                                         cliente.setLogradouro(campoLogradouro.getText().toString());
-                                                                         cliente.setNumeroCasa(Integer.parseInt(campoNumeroResidencia.getText().toString()));
-                                                                         cliente.setCidade(campoCidade.getText().toString());
-                                                                         cliente.setBairro(campoBairro.getText().toString());
-                                                                         cliente.setCep(campoCEP.getText().toString());
-                                                                         cliente.setComplemento(campoComplemento.getText().toString());
-                                                                         cliente.setEstado(campoUF.getText().toString());
-                                                                         ClienteControlador clienteControlador = new ClienteControlador(context, null, null, 1);
-                                                                         clienteControlador.cadastrarCliente(cliente);
-                                                                         Intent intent = new Intent(context, MenuActivity.class);
-                                                                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                                                         startActivity(intent);
-                                                                     }
-                                                                 }
-                                                             }
-        );
+        TextView textLogradouro = (TextView) findViewById(R.id.textLogradouro);
+        textLogradouro.setText(getString(R.string.logradouro) + ": " + cliente.getLogradouro());
+        TextView textNumero = (TextView) findViewById(R.id.textNumero);
+        textNumero.setText(getString(R.string.numero) + ": " + cliente.getNumeroCasa());
+        TextView textBairro = (TextView) findViewById(R.id.textBairro);
+        textBairro.setText(getString(R.string.bairro) + ": " + cliente.getBairro());
+        TextView textCidade = (TextView) findViewById(R.id.textCidade);
+        textCidade.setText(getString(R.string.cidade) + ": " + cliente.getCidade());
+        TextView textEstado = (TextView) findViewById(R.id.textEstado);
+        textEstado.setText(getString(R.string.uf) + ": " + cliente.getEstado());
+        TextView textComplemento = (TextView) findViewById(R.id.textComplemento);
+        textComplemento.setText(getString(R.string.complemento) + ": " + cliente.getComplemento());
+        TextView textCep = (TextView) findViewById(R.id.textCep);
+        textCep.setText(getString(R.string.cep) + ": " + Mask.mask(Mask.CEP_MASK, String.valueOf(cliente.getCep())));
+
+        final RadioGroup radioGroup = (RadioGroup) findViewById(R.id.radioGroupEntrega);
+        final RadioButton radioMeuEndereco = (RadioButton) findViewById(R.id.radioMeuEndereco);
+        final RadioButton radioOutroEndereco = (RadioButton) findViewById(R.id.radioNovoEndereco);
+        final CardView cardEndereco = (CardView) findViewById(R.id.cardDescricao);
+        final LinearLayout linearLayout = (LinearLayout) findViewById(R.id.form_endereco);
+        linearLayout.setVisibility(View.GONE);
+
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (checkedId == R.id.radioMeuEndereco) {
+                    cardEndereco.setVisibility(View.VISIBLE);
+                    linearLayout.setVisibility(View.GONE);
+                } else if (checkedId == R.id.radioNovoEndereco) {
+                    linearLayout.setVisibility(View.VISIBLE);
+                    cardEndereco.setVisibility(View.GONE);
+                }
+            }
+        });
+
+        findViewById(R.id.botaoContinuar).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int selectedId = radioGroup.getCheckedRadioButtonId();
+
+                // find which radioButton is checked by id
+                if (selectedId == radioMeuEndereco.getId()) {
+
+                } else if (selectedId == radioOutroEndereco.getId()) {
+                    if (verificaCampos()) {
+
+                    }
+                }
+            }
+        });
     }
 
     private boolean verificaCampos() { // Método para verificar se os campos estão vazios
@@ -114,5 +146,4 @@ public class CadastroEnderecoActivity extends AppCompatActivity {
 
 
     }
-
 }

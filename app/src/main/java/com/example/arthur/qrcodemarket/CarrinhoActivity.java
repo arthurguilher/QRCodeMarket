@@ -84,6 +84,8 @@ public class CarrinhoActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (MenuActivity.cliente == null) {
                     startActivity(new Intent(context, LoginActivity.class));
+                } else {
+                    startActivity(new Intent(context, LocalEntrega.class));
                 }
             }
         });
