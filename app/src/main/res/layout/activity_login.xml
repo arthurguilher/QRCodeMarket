@@ -49,7 +49,7 @@
                     android:id="@+id/campoCPF"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="CPF"
+                    android:hint="@string/cpf_login"
                     android:inputType="number"
                     android:maxLines="1"
                     android:singleLine="true" />
@@ -64,7 +64,7 @@
                     android:id="@+id/campoSenha"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Senha"
+                    android:hint="@string/senha_login"
                     android:imeActionId="@+id/login"
                     android:imeOptions="actionUnspecified"
                     android:inputType="textPassword"
@@ -79,7 +79,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:background="@color/green_400"
-                android:text="Entrar"
+                android:text="@string/botao_entrar_login"
                 android:textColor="@color/white"
                 android:textStyle="bold" />
 
@@ -97,7 +97,7 @@
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginTop="20dp"
-                android:text="Não tenho cadastro"
+                android:text="@string/nao_tenho_cadastro"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <Button
@@ -108,7 +108,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="10dp"
                 android:background="@color/red_400"
-                android:text="Criar conta"
+                android:text="@string/botao_criar_conta"
                 android:textColor="@color/white"
                 android:textStyle="bold" />
 
@@ -118,7 +118,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="10dp"
-                android:text="OU"
+                android:text="@string/ou"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <Button
@@ -129,7 +129,7 @@
                 android:layout_marginTop="10dp"
                 android:background="@color/indigo_500"
                 android:drawableLeft="@mipmap/ic_facebook"
-                android:text="Entre com o Facebook"
+                android:text="@string/botao_entre_facebook"
                 android:textColor="@color/tabsScrollColor"
                 android:textStyle="bold" />
 

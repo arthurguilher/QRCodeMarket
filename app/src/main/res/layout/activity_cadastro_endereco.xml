@@ -24,7 +24,7 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:text="Informações de endereço"
+            android:text="@string/informacoes_de_endereco"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <TableRow
@@ -42,7 +42,7 @@
                     android:id="@+id/campoLogradouro"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Logradouro"
+                    android:hint="@string/logradouro"
                     android:inputType="text"
                     android:maxLines="1"
                     android:singleLine="true" />
@@ -57,7 +57,7 @@
                     android:id="@+id/campoNumeroResidencia"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Nº"
+                    android:hint="@string/numero"
                     android:inputType="number"
                     android:maxLines="1"
                     android:singleLine="true" />
@@ -79,7 +79,7 @@
                     android:id="@+id/campoBairro"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Bairro"
+                    android:hint="@string/bairro"
                     android:inputType="text"
                     android:maxLines="1"
                     android:singleLine="true" />
@@ -94,7 +94,7 @@
                     android:id="@+id/campoCidade"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Cidade"
+                    android:hint="@string/cidade"
                     android:inputType="text"
                     android:maxLines="1"
                     android:singleLine="true" />
@@ -107,7 +107,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="10dp"
                 android:layout_weight="0.10"
-                android:text="PE"
+                android:text="@string/estado"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
         </TableRow>
 
@@ -126,7 +126,7 @@
                     android:id="@+id/campoCEP"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="CEP"
+                    android:hint="@string/cep"
                     android:inputType="number"
                     android:maxLines="1"
                     android:singleLine="true" />
@@ -142,7 +142,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight=".70"
-                    android:hint="Complemento"
+                    android:hint="@string/complemento"
                     android:inputType="text"
                     android:maxLines="1"
                     android:singleLine="true" />
@@ -156,7 +156,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:background="@color/red_400"
-            android:text="Cadastrar"
+            android:text="@string/botao_cadastrar"
             android:textColor="@color/white"
             android:textStyle="bold" />
 

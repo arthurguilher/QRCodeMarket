@@ -37,7 +37,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center|left"
-                android:text="Visitante"
+                android:text="@string/visitante"
                 android:textAppearance="?android:attr/textAppearanceLargePopupMenu" />
 
             <TextView
@@ -55,7 +55,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:background="@color/green_400"
-        android:text="Entrar"
+        android:text="@string/botao_entrar_menu"
         android:textColor="@color/white"
         android:textStyle="bold" />
 
@@ -72,7 +72,7 @@
         android:layout_marginTop="50dp"
         android:background="@color/yellow_900"
         android:drawableLeft="@mipmap/ic_cart"
-        android:text="Meu carrinho"
+        android:text="@string/botao_meu_carrinho"
         android:textColor="@color/white"
         android:textStyle="bold" />
 
@@ -83,7 +83,7 @@
         android:layout_marginTop="10dp"
         android:background="@color/blue_900"
         android:drawableLeft="@mipmap/ic_compras"
-        android:text="Minhas compras"
+        android:text="@string/botao_meu_carrinho"
         android:textColor="@color/white"
         android:textStyle="bold" />
 
@@ -95,7 +95,7 @@
         android:layout_marginTop="10dp"
         android:background="@color/red_900"
         android:drawableLeft="@mipmap/ic_edit_user"
-        android:text="Editar meus dados"
+        android:text="@string/botao_atualizar_dados"
         android:textColor="@color/white"
         android:textStyle="bold" />
 
@@ -107,7 +107,7 @@
         android:layout_marginTop="10dp"
         android:background="@color/grey_800"
         android:drawableLeft="@mipmap/ic_settings"
-        android:text="Configurações"
+        android:text="@string/botao_config"
         android:textColor="@color/white"
         android:textStyle="bold" />
 

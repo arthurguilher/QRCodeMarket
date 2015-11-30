@@ -37,7 +37,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
-                android:hint="Nome completo"
+                android:hint="@string/nome_completo"
                 android:inputType="textPersonName"
                 android:maxLines="1"
                 android:singleLine="true" />
@@ -59,7 +59,7 @@
                     android:id="@+id/campoEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="E-mail (se possuir)"
+                    android:hint="@string/email"
                     android:inputType="textEmailAddress"
                     android:maxLines="1"
                     android:singleLine="true" />
@@ -74,7 +74,7 @@
                     android:id="@+id/campoCPF"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="CPF"
+                    android:hint="@string/cpf"
                     android:inputType="number"
                     android:maxLines="1"
                     android:singleLine="true" />
@@ -142,7 +142,7 @@
                     android:id="@+id/campoSenha"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/small_hint_senha"
+                    android:hint="@string/senha"
                     android:inputType="textPassword"
                     android:maxLines="1"
                     android:singleLine="true" />
@@ -157,7 +157,7 @@
                     android:id="@+id/campoSenha2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/small_hint_senha2"
+                    android:hint="@string/confirme_a_senha"
                     android:inputType="textPassword"
                     android:maxLines="1"
                     android:singleLine="true" />
@@ -171,7 +171,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:background="@color/red_400"
-            android:text="Continuar"
+            android:text="@string/botao_continuar"
             android:textColor="@color/white"
             android:textStyle="bold" />
     </LinearLayout>

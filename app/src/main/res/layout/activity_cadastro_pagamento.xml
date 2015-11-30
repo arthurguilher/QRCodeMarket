@@ -38,21 +38,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
-                android:text="Cancelar" />
+                android:text="@string/botao_cancelar" />
 
             <Button
                 android:id="@+id/botaoPular"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
-                android:text="Pular" />
+                android:text="@string/botao_pular" />
 
             <Button
                 android:id="@+id/botaoFinalizar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
-                android:text="Finalizar" />
+                android:text="@string/botao_finalizar" />
         </TableRow>
 
     </LinearLayout>

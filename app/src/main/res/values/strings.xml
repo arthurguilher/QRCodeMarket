@@ -1,6 +1,7 @@
 <resources>
+
     <string name="app_name">QRCodeMarket</string>
-    
+
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Senha</string>
@@ -16,9 +17,61 @@
         <item>Feminino</item>
     </string-array>
     <string name="small_hint_senha"><font size="15">Senha</font></string>
+    <!-- isso é o tamanho da senha né? deixa aqui ou tira? acho que ja tava aqui, ai não mexi. -->
     <string name="small_hint_senha2"><font size="15">Confirme a senha</font></string>
     <string name="title_activity_menu">Menu</string>
-    <string name="infomacoes_basicas">Iasidjasd</string>
+
+    <!-- Strings de Cadastro -->
+    <string name="infomacoes_basicas">Informações Básicas</string>
+    <string name="nome_completo">Nome completo</string>
+    <string name="email">E-mail (se possuir)</string>
+    <string name="cpf">CPF</string>
     <string name="celular">Celular</string>
     <string name="nascimento">Nascimento</string>
+    <string name="senha">Senha</string>
+    <string name="confirme_a_senha">Confirme a senha</string>
+    <string name="botao_continuar">Continuar</string>
+
+    <!-- Strings de Cadastro_endereço -->
+    <string name="informacoes_de_endereco">Informações de Endereço</string>
+    <string name="logradouro">Logradouro</string>
+    <string name="numero">Nº</string>
+    <string name="bairro">Bairro</string>
+    <string name="cidade">Cidade</string>
+    <string name="estado">PE</string>
+    <!-- mais na frente a gente muda pra UF, e coloca a opcão dos estados. pq vai depender do estado que o usuario reside. -->
+    <string name="cep">CEP</string>
+    <string name="complemento">Complemento</string>
+    <string name="botao_cadastrar">Cadastrar</string>
+
+    <!-- Strings de Cadastro_pagamento -->
+    <string name="informacoes_de_pagamento">Informações de Pagamento</string>
+    <string name="botao_cancelar">Cancelar</string>
+    <string name="botao_pular">Pular</string>
+    <string name="botao_finalizar">Finalizar</string>
+
+    <!-- Strings de Carrinho -->
+    <string name="adicionar_produto">Adicionar Produto</string>
+    <string name="frete">Frete: R$ 3,99</string>
+    <string name="total">Total: R$ 0,00</string>
+    <string name="comprar">Comprar</string>
+
+    <!-- Strings de Login -->
+    <string name="sou_cadastrado">Sou cadastrado</string>
+    <string name="cpf_login">CPF</string>
+    <string name="senha_login">Senha</string>
+    <string name="botao_entrar_login">Entrar</string>
+    <string name="nao_tenho_cadastro">Não tenho cadastro</string>
+    <string name="botao_criar_conta">Criar Conta</string>
+    <string name="ou">OU</string>
+    <string name="botao_entre_facebook">Entre com o Facebook</string>
+
+    <!-- Strings de Menu -->
+    <string name="visitante">Visitante</string>
+    <string name="botao_entrar_menu">Entrar</string>
+    <string name="botao_meu_carrinho">Meu Carrinho</string>
+    <string name="botao_minhas_compras">Minhas Compras</string>
+    <string name="botao_atualizar_dados">Atualizar Meus Dados</string>
+    <string name="botao_config">Configurações</string>
+
 </resources>
