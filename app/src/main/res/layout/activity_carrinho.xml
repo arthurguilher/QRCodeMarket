@@ -12,25 +12,24 @@
     <LinearLayout
         android:id="@+id/form_cadastro"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="fill_parent"
+        android:layout_gravity="center"
+        android:gravity="center"
         android:orientation="vertical">
 
-        <Button
-            android:id="@+id/botaoAddCarrinho"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/textCarrinhoVazio"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/yellow_900"
-            android:drawableLeft="@mipmap/ic_cart_add"
-            android:onClick="scanQR"
-            android:text="@string/adicionar_produto"
-            android:textColor="@color/white"
-            android:textStyle="bold" />
+            android:layout_gravity="center"
+            android:text="@string/texto_carrinho_vazio"
+            android:textAlignment="center"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <ListView
             android:id="@+id/listView"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_marginTop="5dp"
+            android:layout_height="wrap_content"
             android:layout_weight=".70"
             android:cacheColorHint="#FFFFFF" />
 
@@ -39,43 +38,59 @@
             android:layout_height="wrap_content"
             android:layout_gravity="left"
             android:layout_marginTop="10dp"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:weightSum="1">
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="left"
-                android:layout_weight="0.40"
-                android:orientation="vertical"
+                android:layout_gravity="bottom"
+                android:orientation="horizontal"
                 android:weightSum="1">
 
                 <TextView
                     android:id="@+id/textFrete"
-                    android:layout_width="wrap_content"
+                    android:layout_width="50dp"
                     android:layout_height="wrap_content"
-                    android:text="@string/frete"
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
+                    android:layout_weight=".40"
+                    android:text="Frete: R$ 3,99"
+                    android:textAppearance="?android:attr/textAppearanceSmall" />
 
                 <TextView
                     android:id="@+id/textoTotal"
-                    android:layout_width="wrap_content"
+                    android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:layout_weight=".40"
-                    android:text="@string/total"
-                    android:textAppearance="?android:attr/textAppearanceLarge" />
+                    android:layout_weight=".60"
+                    android:gravity="right"
+                    android:text="Sub-total: R$ 0,00"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
             </LinearLayout>
 
             <Button
-                android:id="@+id/botaoComprar"
-                android:layout_width="10dp"
+                android:id="@+id/botaoAddCarrinho"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="left"
+                android:layout_gravity="bottom"
+                android:layout_marginTop="5dp"
+                android:background="@color/yellow_900"
+                android:drawableLeft="@mipmap/ic_cart_add"
+                android:onClick="scanQR"
+                android:text="@string/adicionar_produto"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/botaoComprar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginTop="5dp"
                 android:layout_weight=".60"
                 android:background="@color/green_400"
+                android:drawableLeft="@mipmap/ic_checkout"
                 android:text="@string/comprar"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:textStyle="bold" />
 
         </LinearLayout>
 

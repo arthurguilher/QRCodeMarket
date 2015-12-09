@@ -1,20 +1,27 @@
 package com.example.arthur.qrcodemarket.entidades;
 
 /**
- * Created by Arthur on 26/10/2015.
+ * Created by Arthur on 01/12/2015.
  */
-public class Produto {
+public class Carrinho {
 
     private int id;
-    private String nome, descricao, foto;
+    private String nome;
+    private String descricao;
+    private String foto;
+    private int quantidade;
     private double valor;
 
-    public Produto(int id) {
-        this.id = id;
+    public Carrinho() {
+
     }
 
-    public Produto() {
+    public int getQuantidade() {
+        return quantidade;
+    }
 
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
     }
 
     public int getId() {

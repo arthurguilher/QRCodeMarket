@@ -1,6 +1,7 @@
 package com.example.arthur.qrcodemarket;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
@@ -13,9 +14,10 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.example.arthur.qrcodemarket.entidades.Cliente;
+import com.example.arthur.qrcodemarket.entidades.Compra;
 import com.example.arthur.qrcodemarket.util.Mask;
 
-public class LocalEntrega extends AppCompatActivity {
+public class LocalEntregaActivity extends AppCompatActivity {
 
     private final Context context = this;
     private Cliente cliente;
@@ -26,13 +28,17 @@ public class LocalEntrega extends AppCompatActivity {
     private AutoCompleteTextView campoCidade;
     private TextView campoUF;
     private AutoCompleteTextView campoComplemento;
+    private Controlador controlador;
+    private Compra compra;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_local_entrega);
+        setTitle(R.string.local_entrega);
 
         cliente = MenuActivity.cliente;
+        controlador = new Controlador(context, null, null, 1);
 
         campoLogradouro = (AutoCompleteTextView) findViewById(R.id.campoLogradouro);
         campoNumeroResidencia = (AutoCompleteTextView) findViewById(R.id.campoNumeroResidencia);
@@ -81,16 +87,37 @@ public class LocalEntrega extends AppCompatActivity {
         findViewById(R.id.botaoContinuar).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 int selectedId = radioGroup.getCheckedRadioButtonId();
+
+                compra = new Compra();
 
                 // find which radioButton is checked by id
                 if (selectedId == radioMeuEndereco.getId()) {
-
+                    compra.setBairro(cliente.getBairro());
+                    compra.setCidade(cliente.getCidade());
+                    compra.setCep(cliente.getCep());
+                    compra.setLogradouro(cliente.getLogradouro());
+                    compra.setNumeroCasa(cliente.getNumeroCasa());
+                    compra.setComplemento(cliente.getComplemento());
+                    compra.setEstado(cliente.getEstado());
                 } else if (selectedId == radioOutroEndereco.getId()) {
                     if (verificaCampos()) {
-
+                        compra.setEstado(campoUF.getText().toString());
+                        compra.setCidade(campoCidade.getText().toString());
+                        compra.setCep(campoCEP.getText().toString());
+                        compra.setLogradouro(campoLogradouro.getText().toString());
+                        compra.setNumeroCasa(Integer.valueOf(campoNumeroResidencia.getText().toString()));
+                        compra.setComplemento(campoComplemento.getText().toString());
+                        compra.setBairro(campoBairro.getText().toString());
                     }
                 }
+                compra.setCliente(cliente);
+                compra.setFrete(Double.valueOf(getString(R.string.valor_frete)));
+                Intent intent = new Intent(context, ConfirmacaoActivity.class);
+                intent.putExtra("Compra", compra);
+                startActivity(intent);
+
             }
         });
     }

@@ -52,8 +52,8 @@ public class CadastroEnderecoActivity extends AppCompatActivity {
                                                                          cliente.setCep(campoCEP.getText().toString());
                                                                          cliente.setComplemento(campoComplemento.getText().toString());
                                                                          cliente.setEstado(campoUF.getText().toString());
-                                                                         ClienteControlador clienteControlador = new ClienteControlador(context, null, null, 1);
-                                                                         clienteControlador.cadastrarCliente(cliente);
+                                                                         Controlador controlador = new Controlador(context, null, null, 1);
+                                                                         controlador.cadastrarCliente(cliente);
                                                                          Intent intent = new Intent(context, MenuActivity.class);
                                                                          intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                                                          startActivity(intent);

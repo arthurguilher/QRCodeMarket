@@ -31,8 +31,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".CarrinhoActivity" />
-        <activity android:name=".LocalEntrega" />
-        <activity android:name=".ConfirmacaoActivity"></activity>
+        <activity android:name=".LocalEntregaActivity" />
+        <activity android:name=".ConfirmacaoActivity" />
+        <activity android:name=".CompraFinalizadaAcitivity" />
+        <activity android:name=".ComprasActivity"></activity>
     </application>
 
 </manifest>

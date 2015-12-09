@@ -83,7 +83,7 @@
         android:layout_marginTop="10dp"
         android:background="@color/blue_900"
         android:drawableLeft="@mipmap/ic_compras"
-        android:text="@string/botao_meu_carrinho"
+        android:text="@string/botao_minhas_compras"
         android:textColor="@color/white"
         android:textStyle="bold" />
 

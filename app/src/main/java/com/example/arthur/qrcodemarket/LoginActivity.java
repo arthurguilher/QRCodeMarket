@@ -165,7 +165,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         String cpf = campoCpf.getText().toString();
         String senha = campoSenha.getText().toString();
 
-        ClienteControlador db = new ClienteControlador(context, null, null, 1);
+        Controlador db = new Controlador(context, null, null, 1);
         cliente = db.loginCliente(cpf, senha);
         boolean cancel = false;
         View focusView = null;

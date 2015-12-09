@@ -14,7 +14,7 @@ public class MenuActivity extends AppCompatActivity {
 
     public static Cliente cliente;
     private Context context = this;
-    private ClienteControlador clienteControlador;
+    private Controlador controlador;
     private TextView textoNomeCliente;
     private TextView textoEmailCliente;
     private Button botaoEntrar;
@@ -25,16 +25,16 @@ public class MenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_menu);
 
         //context.deleteDatabase("qrcodemarket.db");
+        controlador = new Controlador(context, null, null, 1);
+        controlador.limparCarrinho();
+        //controlador.limparCompras();
 
         textoNomeCliente = (TextView) findViewById(R.id.nomeCliente);
         textoEmailCliente = (TextView) findViewById(R.id.emailCliente);
         botaoEntrar = (Button) findViewById(R.id.botaoEntrar);
-        clienteControlador = new ClienteControlador(context, null, null, 1);
 
-        System.out.println("ON CREATE: " + clienteControlador.buscarCliente("093.827.014-19").getId());
-
-        if (!clienteControlador.listarClientes().isEmpty()) {
-            cliente = clienteControlador.listarClientes().get(0);
+        if (!controlador.listarClientes().isEmpty()) {
+            cliente = controlador.listarClientes().get(0);
             textoNomeCliente.setText(cliente.getNome());
             textoEmailCliente.setText(cliente.getEmail());
             botaoEntrar.setVisibility(View.GONE);
@@ -55,13 +55,20 @@ public class MenuActivity extends AppCompatActivity {
                 startActivity(new Intent(context, CarrinhoActivity.class));
             }
         });
+
+        findViewById(R.id.botaoCompras).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(context, ComprasActivity.class));
+            }
+        });
     }
 
     @Override
     protected void onResume() {
-        System.out.println("ON RESUME: " + clienteControlador.listarClientes().size());
-        if (!clienteControlador.listarClientes().isEmpty()) {
-            cliente = clienteControlador.listarClientes().get(0);
+        System.out.println("ON RESUME: " + controlador.listarClientes().size());
+        if (!controlador.listarClientes().isEmpty()) {
+            cliente = controlador.listarClientes().get(0);
             textoNomeCliente.setText(cliente.getNome());
             textoEmailCliente.setText(cliente.getEmail());
             botaoEntrar.setVisibility(View.GONE);

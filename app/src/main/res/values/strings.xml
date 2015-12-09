@@ -53,9 +53,10 @@
 
     <!-- Strings de Carrinho -->
     <string name="adicionar_produto">Adicionar Produto</string>
-    <string name="frete">Frete: R$ 3,99</string>
-    <string name="total">Total: R$ 0,00</string>
+    <string name="frete">Frete</string>
+    <string name="total">Total</string>
     <string name="comprar">Comprar</string>
+    <string name="valor_frete">3.99</string>
 
     <!-- Strings de Login -->
     <string name="sou_cadastrado">Sou cadastrado</string>
@@ -70,9 +71,9 @@
     <!-- Strings de Menu -->
     <string name="visitante">Visitante</string>
     <string name="botao_entrar_menu">Entrar</string>
-    <string name="botao_meu_carrinho">Meu Carrinho</string>
-    <string name="botao_minhas_compras">Minhas Compras</string>
-    <string name="botao_atualizar_dados">Atualizar Meus Dados</string>
+    <string name="botao_meu_carrinho">Meu carrinho</string>
+    <string name="botao_minhas_compras">Minhas compras</string>
+    <string name="botao_atualizar_dados">Atualizar meus dados</string>
     <string name="botao_config">Configurações</string>
 
     <!-- Strings de Local de entrega -->
@@ -81,5 +82,20 @@
     <string name="local_entrega">Local de entrega</string>
 
     <string name="confirmacao_compra">Confirmação de compra</string>
+    <string name="produtos">Produtos</string>
+    <string name="forma_pagamento">Forma de pagamento</string>
+    <string name="pedido_recebido">Obrigado! O seu pedido foi recebido.</string>
+    <string name="pedido_texto">Em alguns minutos você receberá os seus produtos. Ficamos felizes pela sua preferência e esperamos que possa voltar novamente ;)</string>
+    <string name="pedido_numero">Número do pedido:  %1$s</string>
+    <string name="voltar_menu">Voltar ao menu</string>
+    <string name="pedido">Pedido</string>
+    <string name="remover_produto_carrinho">Tem certeza que deseja remover este produto do seu carrinho?</string>
+    <string name="data">Data</string>
+    <string name="compras_vazia">Ops! Você ainda não realizou nenhuma compra. Que tal fazer uma agora? ;)</string>
+    <string name="texto_carrinho_vazio">Ops! Seu carrinho está vazio. Adicione itens clicando no botão abaixo. É super fácil! ;)</string>
+    <string name="ir_carrinho">Ir para o meu carrinho</string>
+    <string name="carrinho_vazio">O carrinho está vazio!</string>
+    <string name="produto_repetido">Este produto já está no seu carrinho</string>
+    <string name="sub_total">Sub-total</string>
 
 </resources>
