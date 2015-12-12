@@ -103,6 +103,7 @@ public class Controlador extends SQLiteOpenHelper {
 
     public void cadastrarCarrinho(Carrinho carrinho) {
         ContentValues values = new ContentValues();
+        values.put("id", carrinho.getId());
         values.put("nome", carrinho.getNome());
         values.put("descricao", carrinho.getDescricao());
         values.put("foto", carrinho.getFoto());

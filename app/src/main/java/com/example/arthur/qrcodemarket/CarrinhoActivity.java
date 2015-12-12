@@ -92,6 +92,10 @@ public class CarrinhoActivity extends AppCompatActivity {
 
         listaProdutos = controlador.listarCarrinho();
 
+        if (listaProdutos.isEmpty()) {
+            valorTotal = 0;
+        }
+
         textoTotal = (TextView) findViewById(R.id.textoTotal);
         textoTotal.setText(getString(R.string.sub_total) + ": R$ " + String.valueOf(String.format("%.2f", valorTotal)).replace(".", ","));
 
@@ -186,30 +190,30 @@ public class CarrinhoActivity extends AppCompatActivity {
                 textoFrete.setVisibility(View.VISIBLE);
                 textoTotal.setVisibility(View.VISIBLE);
                 textoCarrinhoVazio.setVisibility(View.GONE);
-                if (listaProdutos.isEmpty()) {
+                if (containsCarrinho(carrinho)) {
+                    Toast.makeText(context, getString(R.string.produto_repetido), Toast.LENGTH_LONG).show();
+                } else {
                     controlador.cadastrarCarrinho(carrinho);
+                    System.out.println("CADSTRAR " + carrinho.getId());
                     if (controlador.buscarProduto(produto.getId()) == null) {
                         controlador.cadastrarProdutos(produto);
                     }
                     listaProdutos.add(carrinho);
                     modificarValor(carrinho.getValor(), true);
-                } else {
-                    for (Carrinho carrinho1 : listaProdutos) {
-                        if (carrinho1.getId() != carrinho.getId()) { // Verificar se o produto já está no carrinho.
-                            System.out.println(1);
-                            controlador.cadastrarCarrinho(carrinho);
-                            if (controlador.buscarProduto(produto.getId()) == null) {
-                                controlador.cadastrarProdutos(produto);
-                            }
-                            listaProdutos.add(carrinho);
-                            modificarValor(carrinho.getValor(), true);
-                        } else {
-                            Toast.makeText(context, getString(R.string.produto_repetido), Toast.LENGTH_LONG).show();
-                            break;
-                        }
-                    }
+                    //listaProdutos = controlador.listarCarrinho();
                 }
             }
         }
+    }
+
+
+    private boolean containsCarrinho(Carrinho carrinho) {
+        for (Carrinho carrinho1 : listaProdutos) {
+            System.out.println(carrinho1.getId() + " " + carrinho1.getNome());
+            if (carrinho1.getId() == carrinho.getId()) {
+                return true;
+            }
+        }
+        return false;
     }
 }

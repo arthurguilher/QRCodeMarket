@@ -66,7 +66,6 @@ public class MenuActivity extends AppCompatActivity {
 
     @Override
     protected void onResume() {
-        System.out.println("ON RESUME: " + controlador.listarClientes().size());
         if (!controlador.listarClientes().isEmpty()) {
             cliente = controlador.listarClientes().get(0);
             textoNomeCliente.setText(cliente.getNome());
